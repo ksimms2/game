@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="treth"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2019-01-24 01:39:25 PM"/>
+        <attribute name="created" value="dHJldGg7REVTS1RPUC1OTDNOOUtIOzIwMTktMDEtMjQ7MTA6NTM6MTIgQU07Mjg4MQ=="/>
+        <attribute name="edited" value="dHJldGg7REVTS1RPUC1OTDNOOUtIOzIwMTktMDEtMjQ7MDE6Mzk6MjUgUE07MzszMDE0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NumberToGuess" type="Integer" array="False" size=""/>
+            <declare name="Found" type="Boolean" array="False" size=""/>
+            <declare name="Again" type="Boolean" array="False" size=""/>
+            <declare name="Response" type="String" array="False" size=""/>
+            <declare name="Attempts" type="Integer" array="False" size=""/>
+            <declare name="Surrender" type="Boolean" array="False" size=""/>
+            <assign variable="Again" expression="True"/>
+            <while expression="Again">
+                <assign variable="NumberToGuess" expression="Random(100) + 1"/>
+                <assign variable="Found" expression="False"/>
+                <assign variable="Surrender" expression="False"/>
+                <while expression="!Found &amp;&amp; !Surrender">
+                    <declare name="MyGuess" type="Integer" array="False" size=""/>
+                    <output expression="&quot;Please enter a guess&quot;" newline="True"/>
+                    <input variable="MyGuess"/>
+                    <if expression="MyGuess == 0">
+                        <then>
+                            <assign variable="Surrender" expression="true"/>
+                        </then>
+                        <else>
+                            <if expression="MyGuess == NumberToGuess">
+                                <then>
+                                    <output expression="&quot;Congragulations your guess was correct. The number was &quot;&amp; NumberToGuess&amp;&quot;&quot;" newline="True"/>
+                                    <assign variable="Found" expression="True"/>
+                                </then>
+                                <else>
+                                    <if expression="myGuess &gt; NumberToGuess">
+                                        <then>
+                                            <output expression="&quot;Your guess is too high&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <output expression="&quot;Your guess is too low&quot;" newline="True"/>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </while>
+                <output expression="&quot;Would you like to play again?&quot;" newline="True"/>
+                <input variable="Response"/>
+                <assign variable="Again" expression="Char(Response, 0) == &quot;Y&quot; or Char(Response, 0) == &quot;y&quot;"/>
+            </while>
+            <output expression="&quot;Thank you for playing&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
